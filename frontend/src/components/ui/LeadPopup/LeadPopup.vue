@@ -1,120 +1,114 @@
 <template>
 
-  <div>
+  <transition name="popup">
 
-    <!-- BUTTON -->
-
-    <button
-      class="lead-button"
-      @click="isOpen = true"
+    <div
+      v-if="isOpen"
+      class="lead-popup"
+      @click="closePopup"
     >
-      {{ buttonText }}
-    </button>
-
-    <!-- POPUP -->
-
-    <transition name="popup">
 
       <div
-        v-if="isOpen"
-        class="lead-popup"
-        @click.self="closePopup"
+        class="lead-popup__box"
+        @click.stop
       >
 
-        <div class="lead-popup__box">
+        <!-- CLOSE -->
 
-          <button
-            class="lead-popup__close"
-            @click="closePopup"
+        <button
+          class="lead-popup__close"
+          type="button"
+          @click="closePopup"
+        >
+          ×
+        </button>
+
+        <!-- CONTENT -->
+
+        <div class="lead-popup__content">
+
+          <span class="lead-popup__label">
+            заявка
+          </span>
+
+          <h2 class="lead-popup__title">
+            ОБСУДИМ
+            <br />
+            РЕМОНТ
+          </h2>
+
+          <p class="lead-popup__description">
+            Оставьте контакты —
+            ответим сегодня.
+          </p>
+
+          <!-- FORM -->
+
+          <form
+            class="lead-form"
+            @submit.prevent="submitForm"
           >
-            ×
-          </button>
 
-          <div class="lead-popup__content">
+            <input
+              v-model="form.name"
+              type="text"
+              placeholder="Ваше имя"
+            />
 
-            <span class="lead-popup__label">
-              заявка
-            </span>
+            <input
+              v-model="form.contact"
+              type="text"
+              placeholder="Telegram или телефон"
+            />
 
-            <h2 class="lead-popup__title">
-              ОБСУДИМ
-              <br />
-              РЕМОНТ
-            </h2>
+            <textarea
+              v-model="form.message"
+              placeholder="Что случилось?"
+            ></textarea>
 
-            <p class="lead-popup__description">
-              Оставьте контакты —
-              ответим сегодня.
-            </p>
-
-            <form
-              class="lead-form"
-              @submit.prevent="submitForm"
+            <button
+              class="lead-form__submit"
+              type="submit"
+              :disabled="loading"
             >
 
-              <input
-                v-model="form.name"
-                type="text"
-                placeholder="Ваше имя"
-              />
-
-              <input
-                v-model="form.contact"
-                type="text"
-                placeholder="Telegram или телефон"
-              />
-
-              <textarea
-                v-model="form.message"
-                placeholder="Что случилось?"
-              ></textarea>
-
-              <button
-                type="submit"
-                :disabled="loading"
-              >
-
-                {{ loading
+              {{
+                loading
                   ? 'отправка...'
                   : 'отправить заявку'
-                }}
+              }}
 
-              </button>
+            </button>
 
-              <div
-                v-if="success"
-                class="lead-form__success"
-              >
-                Заявка отправлена
-              </div>
+            <div
+              v-if="success"
+              class="lead-form__success"
+            >
+              Заявка отправлена
+            </div>
 
-            </form>
-
-          </div>
+          </form>
 
         </div>
 
       </div>
 
-    </transition>
+    </div>
 
-  </div>
+  </transition>
 
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import {
+  ref,
+  onMounted,
+  onUnmounted,
+} from 'vue';
 
 import './lead-popup.scss';
 
-const props = defineProps({
-
-  buttonText: {
-    type: String,
-    default: 'оставить заявку',
-  },
-
-});
+/* STATE */
 
 const isOpen = ref(false);
 
@@ -128,18 +122,43 @@ const form = ref({
   message: '',
 });
 
+/* OPEN */
+
+const openPopup = () => {
+
+  isOpen.value = true;
+};
+
+/* CLOSE */
+
 const closePopup = () => {
 
   isOpen.value = false;
 
   loading.value = false;
 
-  setTimeout(() => {
-
-    success.value = false;
-
-  }, 200);
+  success.value = false;
 };
+
+/* EVENTS */
+
+onMounted(() => {
+
+  window.addEventListener(
+    'open-lead-popup',
+    openPopup
+  );
+});
+
+onUnmounted(() => {
+
+  window.removeEventListener(
+    'open-lead-popup',
+    openPopup
+  );
+});
+
+/* SUBMIT */
 
 const submitForm = async () => {
 

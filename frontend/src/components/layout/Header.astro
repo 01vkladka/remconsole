@@ -1,10 +1,10 @@
 ---
 import './header.scss';
 
-import LeadPopup from '@components/ui/LeadPopup/LeadPopup.vue';
+import AppButton from '@components/ui/button/button.vue';
 ---
 
-<header class="header"> 
+<header class="header">
 
   <div class="container">
 
@@ -21,7 +21,14 @@ import LeadPopup from '@components/ui/LeadPopup/LeadPopup.vue';
 
       <!-- ACTION -->
 
-      <LeadPopup client:load />
+      <div class="header__action">
+
+        <AppButton
+          client:load
+          text="оставить заявку"
+        />
+
+      </div>
 
     </div>
 

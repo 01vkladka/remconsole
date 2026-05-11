@@ -1,5 +1,7 @@
 ---
 import '@styles/globals.scss';
+
+import LeadPopup from '@components/ui/LeadPopup/LeadPopup.vue';
 ---
 
 <!doctype html>
@@ -16,7 +18,7 @@ import '@styles/globals.scss';
     />
 
     <title>
-      REMCONSOLE
+      РЕМКОНСОЛЬ.РФ
     </title>
 
     <link
@@ -25,26 +27,25 @@ import '@styles/globals.scss';
     />
 
     <link
-  rel="preconnect"
-  href="https://fonts.googleapis.com"
-/>
+      rel="preconnect"
+      href="https://fonts.gstatic.com"
+      crossorigin
+    />
 
-<link
-  rel="preconnect"
-  href="https://fonts.gstatic.com"
-  crossorigin
-/>
-
-<link
-  href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Russo+One&display=swap"
-  rel="stylesheet"
-/>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Russo+One&display=swap"
+      rel="stylesheet"
+    />
 
   </head>
 
   <body>
 
     <slot />
+
+    <!-- GLOBAL POPUP -->
+
+    <LeadPopup client:load />
 
   </body>
 

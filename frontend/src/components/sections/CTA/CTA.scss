@@ -1,27 +1,114 @@
 .cta {
   position: relative;
 
-  padding:
-    140px
-    0;
+  height: 100svh;
 
-  background: #05070b;
+  min-height: 820px;
+  max-height: 1080px;
 
-  &__wrapper {
+  background:
+    #050505;
+
+  overflow: hidden;
+
+  @media (max-width: 1100px) {
+    height: auto;
+
+    max-height: none;
+
+    min-height: auto;
+
     padding:
-      80px;
+      120px
+      0
+      90px;
+  }
 
-    border:
-      1px solid rgba(255,255,255,.06);
+  .container {
+    position: relative;
 
-    border-radius: 42px;
+    z-index: 5;
+
+    width:
+      min(1680px, calc(100% - 80px));
+
+    height: 100%;
+
+    margin: 0 auto;
+
+    @media (max-width: 768px) {
+      width: calc(100% - 24px);
+    }
+  }
+
+  /* BG */
+
+  &__background {
+    position: absolute;
+
+    inset: 0;
+
+    img {
+      position: absolute;
+
+      right: 0;
+      bottom: 0;
+
+      width: auto;
+      height: 100%;
+
+      object-fit: contain;
+
+      @media (max-width: 1100px) {
+        width: 100%;
+        height: 100%;
+
+        object-fit: cover;
+
+        opacity: .45;
+      }
+    }
+  }
+
+  &__overlay {
+    position: absolute;
+    inset: 0;
 
     background:
       linear-gradient(
-        180deg,
-        rgba(255,255,255,.03),
-        rgba(255,255,255,.01)
+        90deg,
+        rgba(5,5,5,.96) 0%,
+        rgba(5,5,5,.88) 34%,
+        rgba(5,5,5,.52) 68%,
+        rgba(5,5,5,.18) 100%
       );
+
+    @media (max-width: 1100px) {
+      background:
+        linear-gradient(
+          180deg,
+          rgba(5,5,5,.9) 0%,
+          rgba(5,5,5,.74) 40%,
+          rgba(5,5,5,.94) 100%
+        );
+    }
+  }
+
+  /* LAYOUT */
+
+  &__layout {
+    height: 100%;
+
+    display: flex;
+    align-items: center;
+  }
+
+  &__content {
+    max-width: 760px;
+
+    @media (max-width: 1100px) {
+      max-width: 100%;
+    }
   }
 
   &__label {
@@ -29,47 +116,172 @@
 
     display: inline-flex;
     align-items: center;
+    gap: 8px;
 
-    height: 42px;
+    height: 36px;
 
     padding:
       0
-      18px;
+      16px;
 
-    margin-bottom: 28px;
+    margin-bottom: 24px;
 
     border:
-      1px solid rgba(255,255,255,.08);
+      1px solid rgba(217,255,0,.14);
 
     border-radius: 999px;
 
     background:
-      rgba(255,255,255,.03);
+      rgba(255,255,255,.02);
 
-    color: #d9ff00;
+    color:
+      #d9ff00;
 
-    font-size: 11px;
+    font-size: 10px;
     font-weight: 700;
 
-    letter-spacing: .16em;
-
     text-transform: uppercase;
+
+    &::before {
+      content: '';
+
+      width: 6px;
+      height: 6px;
+
+      border-radius: 50%;
+
+      background:
+        #d9ff00;
+    }
   }
 
   &__title {
+    margin-bottom: 24px;
+
+    color: #fff;
+
     font-family:
       'Tektur',
       sans-serif;
 
     font-size:
-      clamp(72px, 8vw, 140px);
+      clamp(72px, 7vw, 148px);
 
-    line-height: .82;
+    line-height: .84;
 
     font-weight: 900;
 
-    letter-spacing: -.08em;
-
     text-transform: uppercase;
+
+    span {
+      color:
+        #d9ff00;
+    }
+
+    @media (max-width: 768px) {
+      font-size: 54px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 42px;
+    }
+  }
+
+  &__description {
+    max-width: 520px;
+
+    margin-bottom: 30px;
+
+    color:
+      rgba(255,255,255,.66);
+
+    font-size: 18px;
+
+    line-height: 1.6;
+
+    @media (max-width: 768px) {
+      font-size: 15px;
+    }
+  }
+
+  /* STATS */
+
+  &__stats {
+    display: flex;
+
+    gap: 14px;
+
+    margin-bottom: 34px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+    }
+  }
+
+  &__actions {
+    display: flex;
+    align-items: center;
+
+    gap: 24px;
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+      align-items: flex-start;
+    }
+  }
+
+  &__meta {
+    color:
+      rgba(255,255,255,.52);
+
+    font-size: 14px;
+
+    line-height: 1.5;
+  }
+}
+
+/* STAT */
+
+.cta-stat {
+  min-width: 180px;
+
+  padding:
+    18px;
+
+  border:
+    1px solid rgba(255,255,255,.05);
+
+  border-radius: 22px;
+
+  background:
+    linear-gradient(
+      180deg,
+      rgba(255,255,255,.03),
+      rgba(255,255,255,.01)
+    );
+
+  backdrop-filter: blur(12px);
+
+  strong {
+    display: block;
+
+    margin-bottom: 6px;
+
+    color:
+      #d9ff00;
+
+    font-size: 26px;
+    font-weight: 900;
+
+    line-height: .9;
+  }
+
+  span {
+    color:
+      rgba(255,255,255,.52);
+
+    font-size: 12px;
+
+    line-height: 1.45;
   }
 }

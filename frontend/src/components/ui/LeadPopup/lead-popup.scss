@@ -21,7 +21,8 @@
   cursor: pointer;
 
   transition:
-    .25s ease;
+    transform .25s ease,
+    box-shadow .25s ease;
 
   &:hover {
     transform:
@@ -46,9 +47,10 @@
 
 .lead-popup {
   position: fixed;
+
   inset: 0;
 
-  z-index: 999;
+  z-index: 999999;
 
   display: flex;
   align-items: center;
@@ -60,6 +62,12 @@
     rgba(5,7,11,.72);
 
   backdrop-filter: blur(12px);
+
+  pointer-events: auto;
+
+  @media (max-width: 768px) {
+    padding: 16px;
+  }
 
   &__box {
     position: relative;
@@ -87,6 +95,8 @@
 
     @media (max-width: 768px) {
       padding: 28px;
+
+      border-radius: 28px;
     }
   }
 
@@ -98,6 +108,10 @@
 
     width: 42px;
     height: 42px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 
     border: none;
 
@@ -111,6 +125,18 @@
     font-size: 24px;
 
     cursor: pointer;
+
+    transition:
+      background .2s ease,
+      transform .2s ease;
+
+    &:hover {
+      background:
+        rgba(255,255,255,.12);
+
+      transform:
+        scale(1.04);
+    }
   }
 
   &__label {
@@ -118,7 +144,8 @@
 
     margin-bottom: 20px;
 
-    color: #d9ff00;
+    color:
+      #d9ff00;
 
     font-size: 11px;
     font-weight: 700;
@@ -131,6 +158,8 @@
   &__title {
     margin-bottom: 18px;
 
+    color: #ffffff;
+
     font-family:
       'Russo One',
       sans-serif;
@@ -141,6 +170,14 @@
     line-height: .88;
 
     text-transform: uppercase;
+
+    @media (max-width: 768px) {
+      font-size: 42px;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 34px;
+    }
   }
 
   &__description {
@@ -152,6 +189,12 @@
     font-size: 16px;
 
     line-height: 1.7;
+
+    @media (max-width: 768px) {
+      margin-bottom: 24px;
+
+      font-size: 14px;
+    }
   }
 }
 
@@ -184,6 +227,18 @@
     font-size: 15px;
 
     outline: none;
+
+    transition:
+      border-color .2s ease,
+      background .2s ease;
+
+    &:focus {
+      border-color:
+        rgba(217,255,0,.34);
+
+      background:
+        rgba(255,255,255,.06);
+    }
   }
 
   input {
@@ -198,16 +253,18 @@
     resize: none;
   }
 
-  button {
+  &__submit {
     height: 60px;
 
     border: none;
 
     border-radius: 18px;
 
-    background: #d9ff00;
+    background:
+      #d9ff00;
 
-    color: #05070b;
+    color:
+      #05070b;
 
     font-size: 15px;
     font-weight: 700;
@@ -215,6 +272,41 @@
     text-transform: uppercase;
 
     cursor: pointer;
+
+    transition:
+      transform .25s ease,
+      box-shadow .25s ease;
+
+    &:hover {
+      transform:
+        translateY(-2px);
+
+      box-shadow:
+        0 0 30px rgba(217,255,0,.24);
+    }
+
+    &:disabled {
+      opacity: .7;
+
+      cursor: default;
+    }
+  }
+
+  &__success {
+    padding:
+      16px
+      18px;
+
+    border-radius: 16px;
+
+    background:
+      rgba(217,255,0,.12);
+
+    color:
+      #d9ff00;
+
+    font-size: 14px;
+    font-weight: 600;
   }
 }
 
@@ -223,10 +315,12 @@
 .popup-enter-active,
 .popup-leave-active {
   transition:
-    .25s ease;
+    opacity .2s ease;
 }
 
 .popup-enter-from,
 .popup-leave-to {
   opacity: 0;
+
+  pointer-events: none;
 }
