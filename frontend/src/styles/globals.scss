@@ -1,0 +1,25 @@
+@use './variables' as *;
+@use './reset';
+
+body {
+  overflow-x: hidden;
+
+  background: $bg;
+
+  color: $text;
+}
+
+main {
+  position: relative;
+}
+
+.container {
+  width:
+    min(#{$container}, calc(100% - 72px));
+
+  margin: 0 auto;
+
+  @media (max-width: 768px) {
+    width: calc(100% - 28px);
+  }
+}

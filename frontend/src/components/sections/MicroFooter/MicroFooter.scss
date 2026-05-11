@@ -1,0 +1,88 @@
+.micro-footer {
+  position: relative;
+
+  padding:
+    0
+    0
+    24px;
+
+  background: #05070b;
+
+  &__wrapper {
+    min-height: 92px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    gap: 32px;
+
+    padding-top: 24px;
+
+    border-top:
+      1px solid rgba(255,255,255,.06);
+
+    @media (max-width: 768px) {
+      flex-direction: column;
+
+      align-items: flex-start;
+    }
+  }
+
+  &__left {
+    display: flex;
+    flex-direction: column;
+
+    gap: 8px;
+  }
+
+  &__logo {
+    color: #fff;
+
+    font-family:
+      'Tektur',
+      sans-serif;
+
+    font-size: 24px;
+    font-weight: 800;
+
+    letter-spacing: -.06em;
+
+    text-transform: uppercase;
+  }
+
+  &__meta {
+    color:
+      rgba(255,255,255,.42);
+
+    font-size: 13px;
+
+    line-height: 1.5;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+
+    gap: 24px;
+
+    a {
+      color:
+        rgba(255,255,255,.58);
+
+      font-size: 13px;
+      font-weight: 600;
+
+      text-transform: uppercase;
+
+      letter-spacing: .08em;
+
+      transition:
+        .25s ease;
+
+      &:hover {
+        color: #d9ff00;
+      }
+    }
+  }
+}

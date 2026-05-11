@@ -1,0 +1,30 @@
+---
+import './header.scss';
+
+import LeadPopup from '@components/ui/LeadPopup/LeadPopup.vue';
+---
+
+<header class="header"> 
+
+  <div class="container">
+
+    <div class="header__wrapper">
+
+      <!-- LOGO -->
+
+      <a
+        href="/"
+        class="header__logo"
+      >
+        РЕМКОНСОЛЬ<span>.РФ</span>
+      </a>
+
+      <!-- ACTION -->
+
+      <LeadPopup client:load />
+
+    </div>
+
+  </div>
+
+</header>

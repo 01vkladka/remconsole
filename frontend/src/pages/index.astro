@@ -1,0 +1,35 @@
+---
+import Layout from '@layouts/Layout.astro';
+
+import Header from '@components/layout/Header.astro';
+
+import Hero from '@components/sections/Hero/Hero.astro';
+
+import Repairs from '@components/sections/Repairs/Repairs.vue';
+
+import Process from '@components/sections/Process/Process.vue';
+
+import CTA from '@components/sections/CTA/CTA.vue';
+
+import MicroFooter from '@components/sections/MicroFooter/MicroFooter.astro';
+---
+
+<Layout>
+
+  <Header />
+
+  <main>
+
+    <Hero />
+
+    <Repairs client:load />
+
+    <Process client:load />
+
+    <CTA client:load />
+
+  </main>
+
+  <MicroFooter />
+
+</Layout>

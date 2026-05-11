@@ -1,0 +1,91 @@
+---
+import './hero.scss';
+import LeadPopup from '@components/ui/LeadPopup/LeadPopup.vue';
+import HeroInfo from './HeroInfo.vue';
+---
+
+<section class="hero">
+
+  <!-- BACKGROUND -->
+
+  <div class="hero__background">
+
+    <img
+      src="/images/hero.webp"
+      alt=""
+      loading="eager"
+      decoding="async"
+    />
+
+  </div>
+
+  <!-- OVERLAY -->
+
+  <div class="hero__overlay"></div>
+
+  <div class="hero__noise"></div>
+
+  <div class="container">
+
+    <div class="hero__layout">
+
+      <!-- LEFT -->
+
+      <div class="hero__content">
+
+        <div class="hero__badge">
+
+          <span></span>
+
+          мастерская игровых приставок
+
+        </div>
+
+        <h1 class="hero__title">
+          РЕМ
+          <br />
+          КОНСОЛЬ
+        </h1>
+
+        <h2 class="hero__subtitle">
+          Ремонт PlayStation,
+          Xbox и геймпадов
+        </h2>
+
+        <p class="hero__description">
+          Диагностика, пайка HDMI,
+          чистка, перегрев, питание
+          и восстановление игровых приставок.
+        </p>
+
+        <div class="hero__actions">
+
+          <div class="hero__actions">
+
+            <LeadPopup
+              button-text="оставить заявку"
+              client:load
+            />
+          
+            <a
+              href="tel:+79999999999"
+              class="hero__button hero__button--secondary"
+            >
+              позвонить
+            </a>
+          
+          </div>
+
+        </div>
+
+      </div>
+
+      <!-- RIGHT -->
+
+      <HeroInfo client:load />
+
+    </div>
+
+  </div>
+
+</section>
